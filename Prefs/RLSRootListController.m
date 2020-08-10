@@ -92,7 +92,6 @@ BOOL isEnabled = YES;
     CGRect frame = self.table.bounds;
     frame.origin.y = -frame.size.height;
 
-    self.navigationController.navigationController.navigationBar.barTintColor = [UIColor colorWithRed: 0.76 green: 0.67 blue: 1.00 alpha: 1.00];
     [self.navigationController.navigationController.navigationBar setShadowImage: [UIImage new]];
     self.navigationController.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationController.navigationBar.translucent = YES;
