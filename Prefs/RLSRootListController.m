@@ -64,7 +64,7 @@ BOOL isEnabled = YES;
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,200,200)];
     self.headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,200,200)];
     self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.headerImageView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/RLSPrefs.bundle/Banner.png"];
+    self.headerImageView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/RLSPrefs.bundle/banner.png"];
     self.headerImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.headerImageView.clipsToBounds = YES;
 
