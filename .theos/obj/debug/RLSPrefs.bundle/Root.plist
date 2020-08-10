@@ -60,6 +60,8 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Saving life poeples</string>
+			<key>footerText</key>
+			<string>Special thanks to Jaidan for pointing my dumbiness out</string>
 		</dict>
 		<dict>
             <key>cell</key>
