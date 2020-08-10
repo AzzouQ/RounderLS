@@ -150,23 +150,19 @@ BOOL isEnabled = YES;
     NSString* path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     NSSet* allKeys = [NSSet setWithArray:[dictionary allKeys]];
-    HBPreferences *preferences = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
+    HBPreferences *prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
 
-    if (!([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/Library/Preferences/love.litten.violetpreferences.plist"])) {
-        isEnabled = YES;
-        [preferences setBool:isEnabled forKey:@"Enabled"];
-        [self respring];
-    } else if (!([allKeys containsObject:@"Enabled"])) {
-        isEnabled = YES;
-        [preferences setBool:isEnabled forKey:@"Enabled"];
-        [self respring];
-    } else if ([[preferences objectForKey:@"Enabled"] isEqual:@(NO)]) {
-        isEnabled = YES;
-        [preferences setBool:isEnabled forKey:@"Enabled"];
-        [self respring];
-    } else if ([[preferences objectForKey:@"Enabled"] isEqual:@(YES)]) {
+    if (!([allKeys containsObject:@"Enabled"])) {
         isEnabled = NO;
-        [preferences setBool:isEnabled forKey:@"Enabled"];
+        [prefs setBool:isEnabled forKey:@"Enabled"];
+        [self respring];
+    } else if ([[prefs objectForKey:@"Enabled"] isEqual:@(YES)]) {
+        isEnabled = NO;
+        [prefs setBool:isEnabled forKey:@"Enabled"];
+        [self respring];
+    } else if ([[prefs objectForKey:@"Enabled"] isEqual:@(NO)]) {
+        isEnabled = YES;
+        [prefs setBool:isEnabled forKey:@"Enabled"];
         [self respring];
     }
 }
@@ -176,15 +172,13 @@ BOOL isEnabled = YES;
     NSString* path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
     NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
     NSSet* allKeys = [NSSet setWithArray:[dictionary allKeys]];
-    HBPreferences* preferences = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
+    HBPreferences* prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
 
-    if (!([[NSFileManager defaultManager] fileExistsAtPath:@"/var/mobile/Library/Preferences/love.litten.violetpreferences.plist"]))
-        [[self enableSwitch] setOn:NO animated:YES];
-    else if (!([allKeys containsObject:@"Enabled"]))
-        [[self enableSwitch] setOn:NO animated:YES];
-    else if ([[preferences objectForKey:@"Enabled"] isEqual:@(YES)])
+    if (!([allKeys containsObject:@"Enabled"]))
         [[self enableSwitch] setOn:YES animated:YES];
-    else if ([[preferences objectForKey:@"Enabled"] isEqual:@(NO)])
+    else if ([[prefs objectForKey:@"Enabled"] isEqual:@(YES)])
+        [[self enableSwitch] setOn:YES animated:YES];
+    else if ([[prefs objectForKey:@"Enabled"] isEqual:@(NO)])
         [[self enableSwitch] setOn:NO animated:YES];
 }
 
@@ -214,7 +208,6 @@ BOOL isEnabled = YES;
 
     }
 
-    [self.enableSwitch setOn:NO animated: YES];
     [self respring];
 }
 

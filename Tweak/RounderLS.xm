@@ -10,12 +10,10 @@ BOOL isEnabled;
 
 	%orig;
 
-	if (isEnabled) {
-		SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
+	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
-		[backgroundView setClipsToBounds:TRUE];
-		[[backgroundView layer] setCornerRadius:39];
-	}
+	[backgroundView setClipsToBounds:TRUE];
+	[[backgroundView layer] setCornerRadius:[borderRadius doubleValue]];
 }
 
 
@@ -23,12 +21,10 @@ BOOL isEnabled;
 
 	%orig;
 
-	if (isEnabled) {
-		SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
+	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
-		[backgroundView setClipsToBounds:FALSE];
-		[[backgroundView layer] setCornerRadius:0];
-	}
+	[backgroundView setClipsToBounds:FALSE];
+	[[backgroundView layer] setCornerRadius:0];
 }
 
 
@@ -36,24 +32,20 @@ BOOL isEnabled;
 
 	%orig;
 
-	if (isEnabled) {
-		SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
+	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
-		[backgroundView setClipsToBounds:TRUE];
-		[[backgroundView layer] setCornerRadius:39];
-	}
+	[backgroundView setClipsToBounds:TRUE];
+	[[backgroundView layer] setCornerRadius:[borderRadius doubleValue]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
 
 	%orig;
 
-	if (isEnabled) {
-		SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
+	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
-		[backgroundView setClipsToBounds:FALSE];
-		[[backgroundView layer] setCornerRadius:0];
-	}
+	[backgroundView setClipsToBounds:FALSE];
+	[[backgroundView layer] setCornerRadius:0];
 }
 
 %end
@@ -65,6 +57,7 @@ BOOL isEnabled;
 	prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderlsprefs"];
 
 	[prefs registerBool:&isEnabled default:YES forKey:@"Enabled"];
+	[prefs registerObject:&borderRadius default:@"39.0" forKey:@"borderRadius"];
 
 	if (isEnabled) {
 		%init(RounderLS);
