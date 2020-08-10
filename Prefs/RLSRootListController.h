@@ -9,10 +9,10 @@
 @end
 
 @interface RLSRootListController : HBRootListController {
-    UITableView * _table;
+    UITableView *_table;
 }
 
-@property (nonatomic, retain)UISwitch* enableSwitch;
+@property (nonatomic, retain) UISwitch *enableSwitch;
 @property (nonatomic, retain) UIView *headerView;
 @property (nonatomic, retain) UIImageView *headerImageView;
 @property (nonatomic, retain) UILabel *titleLabel;
