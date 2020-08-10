@@ -6,5 +6,5 @@ Maintainer: Azzou
 Author: Azzou
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 13), ws.hbang.common (>= 1.14)
-Version: 1.0.0-22+debug
-Installed-Size: 2224
+Version: 1.0.0-30+debug
+Installed-Size: 2228
