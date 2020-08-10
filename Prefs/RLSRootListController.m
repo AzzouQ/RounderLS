@@ -228,12 +228,7 @@ BOOL isEnabled = YES;
 
 - (void)respringUtil {
 
-    pid_t pid;
-    const char* args[] = {"killall", "backboardd", NULL};
-
     [HBRespringController respringAndReturnTo:[NSURL URLWithString:@"prefs:root=RounderLS"]];
-
-    posix_spawn(&pid, "/usr/bin/killall", NULL, NULL, (char *const *)args, NULL);
 }
 
 @end
