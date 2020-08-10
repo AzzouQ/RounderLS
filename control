@@ -7,4 +7,3 @@ Maintainer: Azzou
 Author: Azzou
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 13), ws.hbang.common (>= 1.14)
-Icon: file:///Users/Azzou/Documents/Tweaks/RounderLS/Prefs/Resources/icon@3x.png
