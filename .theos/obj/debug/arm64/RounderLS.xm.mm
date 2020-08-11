@@ -37,12 +37,11 @@ static void _logos_method$RounderLS$CSCoverSheetViewController$viewWillAppear$(_
 	_logos_orig$RounderLS$CSCoverSheetViewController$viewWillAppear$(self, _cmd, animated);
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
-	CSCoverSheetView  *coversheetView = (CSCoverSheetView *)self.viewIfLoaded;
 
 	[backgroundView setClipsToBounds:TRUE];
 	[[backgroundView layer] setCornerRadius:[borderRadius doubleValue]];
-	[coversheetView setClipsToBounds:TRUE];
-	[[coversheetView layer] setCornerRadius:[borderRadius doubleValue]];
+	[[self view] setClipsToBounds:TRUE];
+	[[[self view] layer] setCornerRadius:[borderRadius doubleValue]];
 }
 
 
@@ -90,7 +89,7 @@ static void _logos_method$RounderLS$CSCoverSheetViewController$viewDidDisappear$
 
 
 
-static __attribute__((constructor)) void _logosLocalCtor_c16daf74(int __unused argc, char __unused **argv, char __unused **envp) {
+static __attribute__((constructor)) void _logosLocalCtor_b80a3c95(int __unused argc, char __unused **argv, char __unused **envp) {
 
 	prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderlsprefs"];
 
