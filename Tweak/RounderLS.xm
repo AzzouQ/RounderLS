@@ -11,9 +11,12 @@ BOOL isEnabled;
 	%orig;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
+	CSCoverSheetView  *coversheetView = (CSCoverSheetView *)self.viewIfLoaded;
 
 	[backgroundView setClipsToBounds:TRUE];
 	[[backgroundView layer] setCornerRadius:[borderRadius doubleValue]];
+	[coversheetView setClipsToBounds:TRUE];
+	[[coversheetView layer] setCornerRadius:[borderRadius doubleValue]];
 }
 
 
@@ -22,9 +25,12 @@ BOOL isEnabled;
 	%orig;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
+	CSCoverSheetView  *coversheetView = (CSCoverSheetView *)self.viewIfLoaded;
 
 	[backgroundView setClipsToBounds:FALSE];
 	[[backgroundView layer] setCornerRadius:0];
+	[coversheetView setClipsToBounds:FALSE];
+	[[coversheetView layer] setCornerRadius:0];
 }
 
 
@@ -33,9 +39,12 @@ BOOL isEnabled;
 	%orig;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
+	CSCoverSheetView  *coversheetView = (CSCoverSheetView *)self.viewIfLoaded;
 
 	[backgroundView setClipsToBounds:TRUE];
 	[[backgroundView layer] setCornerRadius:[borderRadius doubleValue]];
+	[coversheetView setClipsToBounds:TRUE];
+	[[coversheetView layer] setCornerRadius:[borderRadius doubleValue]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -43,9 +52,12 @@ BOOL isEnabled;
 	%orig;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
+	CSCoverSheetView  *coversheetView = (CSCoverSheetView *)self.viewIfLoaded;
 
 	[backgroundView setClipsToBounds:FALSE];
 	[[backgroundView layer] setCornerRadius:0];
+	[coversheetView setClipsToBounds:FALSE];
+	[[coversheetView layer] setCornerRadius:0];
 }
 
 %end

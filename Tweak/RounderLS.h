@@ -3,6 +3,8 @@
 
 @interface SBCoverSheetPanelBackgroundContainerView : UIView
 @end
+@interface CSCoverSheetView : UIView
+@end
 @interface CSCoverSheetViewController : UIViewController
 @end
 
