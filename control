@@ -6,4 +6,4 @@ Description: A little tweak to make your LockScreen rounder !
 Maintainer: Azzou
 Author: Azzou
 Section: Tweaks
-Depends: mobilesubstrate, firmware (>= 13), ws.hbang.common (>= 1.14)
+Depends: mobilesubstrate, firmware (>= 11), ws.hbang.common (>= 1.14)
