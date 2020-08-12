@@ -3,6 +3,9 @@
 # Created by https://www.gitignore.io/api/xcode,windows,visualstudiocode,test,react,node,macos,linux,cocoapods,androidstudio,android,buck
 # Edit at https://www.gitignore.io/?templates=xcode,windows,visualstudiocode,test,react,node,macos,linux,cocoapods,androidstudio,android,buck
 
+## Theos ##
+.theos
+
 ### macOS ###
 # General
 .DS_Store

@@ -12,9 +12,9 @@ BOOL isEnabled;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
-	[[self view] setClipsToBounds:TRUE];
+	[[self view] setClipsToBounds:YES];
 	[[[self view] layer] setCornerRadius:[borderRadius doubleValue]];
-	[backgroundView setClipsToBounds:TRUE];
+	[backgroundView setClipsToBounds:YES];
 	[[backgroundView layer] setCornerRadius:[borderRadius doubleValue]];
 }
 
@@ -25,9 +25,9 @@ BOOL isEnabled;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
-	[[self view] setClipsToBounds:FALSE];
+	[[self view] setClipsToBounds:NO];
 	[[[self view] layer] setCornerRadius:0];
-	[backgroundView setClipsToBounds:FALSE];
+	[backgroundView setClipsToBounds:NO];
 	[[backgroundView layer] setCornerRadius:0];
 }
 
@@ -38,9 +38,9 @@ BOOL isEnabled;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
-	[[self view] setClipsToBounds:TRUE];
+	[[self view] setClipsToBounds:YES];
 	[[[self view] layer] setCornerRadius:[borderRadius doubleValue]];
-	[backgroundView setClipsToBounds:TRUE];
+	[backgroundView setClipsToBounds:YES];
 	[[backgroundView layer] setCornerRadius:[borderRadius doubleValue]];
 }
 
@@ -50,9 +50,9 @@ BOOL isEnabled;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
-	[[self view] setClipsToBounds:FALSE];
+	[[self view] setClipsToBounds:NO];
 	[[[self view] layer] setCornerRadius:0];
-	[backgroundView setClipsToBounds:FALSE];
+	[backgroundView setClipsToBounds:NO];
 	[[backgroundView layer] setCornerRadius:0];
 }
 
