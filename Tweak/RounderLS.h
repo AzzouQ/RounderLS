@@ -9,6 +9,6 @@
 @end
 
 HBPreferences *prefs;
-
 extern BOOL isEnabled;
+
 NSString *borderRadius = @"39.0";
