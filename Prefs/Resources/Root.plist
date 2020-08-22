@@ -85,6 +85,8 @@
 		<dict>
 			<key>cellClass</key>
 			<string>HBLinkTableCell</string>
+			<key>icon</key>
+			<string>GitHub</string>
 			<key>label</key>
 			<string>Source Code</string>
 			<key>subtitle</key>
@@ -95,6 +97,8 @@
 		<dict>
 			<key>cellClass</key>
 			<string>HBLinkTableCell</string>
+			<key>icon</key>
+			<string>PayPal</string>
 			<key>label</key>
 			<string>Support me</string>
 			<key>subtitle</key>
