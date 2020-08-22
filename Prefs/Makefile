@@ -3,7 +3,7 @@ TARGET = iphone:clang:11.2
 
 include $(THEOS)/makefiles/common.mk
 
-BUNDLE_NAME = RLSPrefs
+BUNDLE_NAME = RounderLSPrefs
 $(BUNDLE_NAME)_FILES = $(wildcard *.m)
 $(BUNDLE_NAME)_INSTALL_PATH = /Library/PreferenceBundles
 $(BUNDLE_NAME)_FRAMEWORKS = UIKit

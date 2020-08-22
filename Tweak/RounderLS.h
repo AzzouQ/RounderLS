@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
-#import <Cephei/HBPreferences.h>
+#import "RounderLSPreferences.h"
 
 @interface SBCoverSheetPanelBackgroundContainerView : UIView
 @end
@@ -7,8 +7,3 @@
 @end
 @interface CSCoverSheetViewController : UIViewController
 @end
-
-HBPreferences *prefs;
-extern BOOL isEnabled;
-
-NSString *borderRadius = @"39.0";

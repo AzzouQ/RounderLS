@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
+	<key>title</key>
+	<string>RounderLS</string>
+
 	<key>items</key>
 	<array>
 
@@ -9,17 +13,15 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Options</string>
+			<string>Settings</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSliderCell</string>
-			<key>default</key>
-			<real>39.0</real>
-			<key>defaults</key>
-			<string>com.azzou.rounderlsprefs</string>
 			<key>key</key>
 			<string>borderRadius</string>
+			<key>default</key>
+			<real>39.0</real>
 			<key>min</key>
 			<real>0.0</real>
 			<key>max</key>
@@ -28,6 +30,8 @@
 			<true/>
 			<key>isSegmented</key>
 			<false/>
+			<key>defaults</key>
+			<string>com.azzou.rounderlsprefs</string>
 			<key>PostNotification</key>
 			<string>com.azzou.rounderlsprefs/ReloadPrefs</string>
 		</dict>
@@ -36,7 +40,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Other Options</string>
+			<string>Options</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -52,72 +56,25 @@
 			<key>label</key>
 			<string>Reset Preferences</string>
 			<key>action</key>
-			<string>resetPrompt</string>
+			<string>reset</string>
 		</dict>
 
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Life saver people</string>
-			<key>footerText</key>
-			<string>Special thanks to Jaidan for pointing my dumbiness out</string>
+			<string>Contributors</string>
 		</dict>
 		<dict>
-            <key>cell</key>
-            <string>PSButtonCell</string>
-            <key>label</key>
-            <string>@Litteeen</string>
-            <key>cellClass</key>
-            <string>HBTwitterCell</string>
-            <key>label</key>
-            <string>Litteeen</string>
-            <key>user</key>
-            <string>Litteeen</string>
-        </dict>
-		<dict>
-            <key>cell</key>
-            <string>PSButtonCell</string>
-            <key>label</key>
-            <string>@MrGcGamer</string>
-            <key>cellClass</key>
-            <string>HBTwitterCell</string>
-            <key>label</key>
-            <string>MrGcGamer</string>
-            <key>user</key>
-            <string>MrGcGamer</string>
-        </dict>
-		<dict>
-            <key>cell</key>
-            <string>PSButtonCell</string>
-            <key>label</key>
-            <string>@74k1_</string>
-            <key>cellClass</key>
-            <string>HBTwitterCell</string>
-            <key>label</key>
-            <string>Taki</string>
-            <key>user</key>
-            <string>74k1_</string>
-        </dict>
-
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Original idea</string>
-		</dict>
-		<dict>
-            <key>cell</key>
-            <string>PSButtonCell</string>
-            <key>label</key>
-            <string>@AydenPanhuyzen</string>
-            <key>cellClass</key>
-            <string>HBTwitterCell</string>
-            <key>label</key>
-            <string>AydenPanhuyzen</string>
-            <key>user</key>
-            <string>AydenPanhuyzen</string>
-        </dict>
+ 			<key>cell</key>
+ 			<string>PSLinkCell</string>
+ 			<key>label</key>
+ 			<string>Contributors</string>
+ 			<key>detail</key>
+ 			<string>RounderLSContributorsListController</string>
+ 			<key>RounderLSSub</key>
+ 			<string>Contributors</string>
+ 		</dict>
 
 		<dict>
 			<key>cell</key>
@@ -135,9 +92,18 @@
 			<key>url</key>
 			<string>https://github.com/AzzouDuGhetto/RounderLS</string>
 		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>HBLinkTableCell</string>
+			<key>label</key>
+			<string>Support me</string>
+			<key>subtitle</key>
+			<string>Paypal</string>
+			<key>url</key>
+			<string>https://paypal.me/Azzou</string>
+		</dict>
 
 	</array>
-	<key>title</key>
-	<string>RounderLS</string>
+
 </dict>
 </plist>

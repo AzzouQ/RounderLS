@@ -1,7 +1,5 @@
 #import "RounderLS.h"
 
-BOOL isEnabled;
-
 %group RounderLS
 
 %hook CSCoverSheetViewController

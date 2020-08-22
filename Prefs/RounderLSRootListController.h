@@ -1,15 +1,15 @@
-#import <Preferences/PSListController.h>
 #import <Preferences/PSSpecifier.h>
-#import <CepheiPrefs/HBRootListController.h>
-#import <CepheiPrefs/HBAppearanceSettings.h>
+#import <Preferences/PSListController.h>
 #import <Cephei/HBPreferences.h>
 #import <Cephei/HBRespringController.h>
+#import <CepheiPrefs/HBRootListController.h>
+#import <CepheiPrefs/HBAppearanceSettings.h>
 
-@interface RLSAppearanceSettings : HBAppearanceSettings
+@interface RounderLSAppearanceSettings : HBAppearanceSettings
 @end
 
-@interface RLSRootListController : HBRootListController {
-    UITableView *_table;
+@interface RounderLSRootListController : HBRootListController {
+	UITableView *_table;
 }
 
 @property (nonatomic, retain) UISwitch *enableSwitch;
@@ -20,9 +20,7 @@
 
 - (void)toggleState;
 - (void)setEnableSwitchState;
-- (void)resetPrompt;
-- (void)resetPreferences;
+- (void)reset;
 - (void)respring;
-- (void)respringUtil;
 
 @end
