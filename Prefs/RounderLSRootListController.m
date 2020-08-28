@@ -1,4 +1,3 @@
-#include "../Tweak/RounderLSPreferences.h"
 #include "RounderLSRootListController.h"
 
 @implementation RounderLSRootListController
@@ -18,7 +17,7 @@
 		self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
 		self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
 		self.titleLabel.text = @"1.2";
-		self.titleLabel.textColor = [UIColor whiteColor];
+		self.titleLabel.textColor = [UIColor colorWithRed:0.96 green:0.77 blue:0.75 alpha:1.0];
 		self.titleLabel.textAlignment = NSTextAlignmentCenter;
 
 		self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,10,10)];
@@ -123,7 +122,6 @@
 	[self.navigationController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
 }
 
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
 	CGFloat offsetY = scrollView.contentOffset.y;
@@ -145,10 +143,10 @@
 
 	[[self enableSwitch] setEnabled:YES];
 
-	NSString* path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
-	NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-	NSSet* allKeys = [NSSet setWithArray:[dictionary allKeys]];
-	HBPreferences *prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
+	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+	NSSet *allKeys = [NSSet setWithArray:[dictionary allKeys]];
+	prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
 
 	if (!([allKeys containsObject:@"Enabled"])) {
 		isEnabled = NO;
@@ -167,10 +165,10 @@
 
 - (void)setEnableSwitchState {
 
-	NSString* path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
-	NSMutableDictionary* dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-	NSSet* allKeys = [NSSet setWithArray:[dictionary allKeys]];
-	HBPreferences* prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
+	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+	NSSet *allKeys = [NSSet setWithArray:[dictionary allKeys]];
+	prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
 
 	if (!([allKeys containsObject:@"Enabled"]))
 		[[self enableSwitch] setOn:YES animated:YES];
@@ -182,20 +180,20 @@
 
 - (void)reset {
 
-	UIAlertController* resetAlert = [UIAlertController alertControllerWithTitle:@"RounderLS"
+	UIAlertController *resetAlert = [UIAlertController alertControllerWithTitle:@"RounderLS"
 	message:@"Do you really want to reset your preferences ?"
 	preferredStyle:UIAlertControllerStyleActionSheet];
 	
-	UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"Yep" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * action) {
+	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yeah" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
 
-		HBPreferences* preferences = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
-		for (NSString* key in [preferences dictionaryRepresentation]) {
-			[preferences removeObjectForKey:key];
+		prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
+		for (NSString *key in [prefs dictionaryRepresentation]) {
+			[prefs removeObjectForKey:key];
 		}
 		[self respring];
 	}];
 
-	UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Nope" style:UIAlertActionStyleCancel handler:nil];
+	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Nah" style:UIAlertActionStyleCancel handler:nil];
 
 	[resetAlert addAction:confirmAction];
 	[resetAlert addAction:cancelAction];

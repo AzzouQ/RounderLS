@@ -6,22 +6,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 
-	%orig;
-
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
 	self.view.clipsToBounds = YES;
-	self.view.layer.cornerRadius = [borderRadius doubleValue];
+	self.view.layer.cornerRadius = borderRadius;
 
 	backgroundView.clipsToBounds = YES;
-	backgroundView.layer.cornerRadius = [borderRadius doubleValue];
+	backgroundView.layer.cornerRadius = borderRadius;
+
+	%orig;
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
 
-	%orig;
-
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
 	self.view.clipsToBounds = NO;
@@ -29,25 +27,25 @@
 
 	backgroundView.clipsToBounds = NO;
 	backgroundView.layer.cornerRadius = 0;
+
+	%orig;
 }
 
 
 - (void)viewWillDisappear:(BOOL)animated {
 
-	%orig;
-
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
 	self.view.clipsToBounds = YES;
-	self.view.layer.cornerRadius = [borderRadius doubleValue];
+	self.view.layer.cornerRadius = borderRadius;
 
 	backgroundView.clipsToBounds = YES;
-	backgroundView.layer.cornerRadius = [borderRadius doubleValue];
+	backgroundView.layer.cornerRadius = borderRadius;
+
+	%orig;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-
-	%orig;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
@@ -56,6 +54,8 @@
 
 	backgroundView.clipsToBounds = NO;
 	backgroundView.layer.cornerRadius = 0;
+
+	%orig;
 }
 
 %end
@@ -67,7 +67,7 @@
 	prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderlsprefs"];
 
 	[prefs registerBool:&isEnabled default:YES forKey:@"Enabled"];
-	[prefs registerObject:&borderRadius default:@"39.0" forKey:@"borderRadius"];
+	[prefs registerFloat:&borderRadius default:39.0 forKey:@"borderRadius"];
 
 	if (isEnabled) {
 		%init(RounderLS);

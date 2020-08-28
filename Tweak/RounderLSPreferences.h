@@ -3,4 +3,4 @@
 HBPreferences	*prefs;
 
 BOOL			isEnabled;
-NSString		*borderRadius;
+CGFloat			borderRadius;
