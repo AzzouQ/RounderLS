@@ -1,4 +1,4 @@
-#include "RounderLSRootListController.h"
+#import "RounderLSRootListController.h"
 
 @implementation RounderLSRootListController
 
@@ -75,7 +75,6 @@
 	]];
 
 	_table.tableHeaderView = self.headerView;
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,33 +92,6 @@
 	[self.navigationController.navigationController.navigationBar setShadowImage: [UIImage new]];
 	self.navigationController.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 	self.navigationController.navigationController.navigationBar.translucent = YES;
-
-	UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
-	UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-	[blurView setFrame:self.view.bounds];
-	[blurView setAlpha:1.0];
-	[[self view] addSubview:blurView];
-
-	[UIView animateWithDuration:.4 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-		[blurView setAlpha:0.0];
-	} completion:nil];
-
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-
-	[super viewDidAppear:animated];
-
-	[self.navigationController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-
-	[self setEnableSwitchState];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-
-	[super viewWillDisappear:animated];
-
-	[self.navigationController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

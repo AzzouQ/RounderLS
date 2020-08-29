@@ -5,7 +5,7 @@
 #import <CepheiPrefs/HBRootListController.h>
 #import <CepheiPrefs/HBAppearanceSettings.h>
 
-#include "../Tweak/RounderLSPreferences.h"
+#import "../Tweak/RounderLSPreferences.h"
 
 @interface RounderLSAppearanceSettings : HBAppearanceSettings
 @end
