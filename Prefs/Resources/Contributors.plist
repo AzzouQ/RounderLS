@@ -30,7 +30,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Sharing knowledge with a beginner</string>
+			<string>Sharing knowledge with a beginner 🤝</string>
 		</dict>
 		<dict>
             <key>cell</key>
@@ -47,7 +47,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Designer, pretty logo, emotes master</string>
+			<string>Designer</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -55,9 +55,9 @@
 			<key>cellClass</key>
 			<string>HBTwitterCell</string>
 			<key>label</key>
-			<string>Taki</string>
+			<string>Mirac</string>
 			<key>user</key>
-			<string>74k1_</string>
+			<string>thatmirac</string>
 		</dict>
 
 		<dict>
