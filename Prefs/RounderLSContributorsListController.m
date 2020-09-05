@@ -4,31 +4,32 @@
 
 - (instancetype)init {
 
-	self = [super init];
-
-	if (self) {
-		RounderLSAppearanceSettings* appearanceSettings = [[RounderLSAppearanceSettings alloc] init];
-		self.hb_appearanceSettings = appearanceSettings;
+	if (!(self = [super init])) {
+		return self;
 	}
+	
+	RounderLSAppearanceSettings* appearanceSettings = [[RounderLSAppearanceSettings alloc] init];
+	
+	self.hb_appearanceSettings = appearanceSettings;
 
 	return self;
 }
 
-- (void)loadFromSpecifier:(PSSpecifier *)specifier {
+- (NSArray *)specifiers {
 
-	NSString *sub = [specifier propertyForKey:@"RounderLSSub"];
-	NSString *title = [specifier name];
+	if (_specifiers == nil) {
+		_specifiers = [[self loadSpecifiersFromPlistName:@"Contributors" target:self] retain];
+	}
 
-	_specifiers = [[self loadSpecifiersFromPlistName:sub target:self] retain];
-
-	[self setTitle:title];
-	[self.navigationItem setTitle:title];
+	return _specifiers;
 }
 
 - (void)setSpecifier:(PSSpecifier *)specifier {
 
-	[self loadFromSpecifier:specifier];
 	[super setSpecifier:specifier];
+
+	[self setTitle:[specifier name]];
+	[self.navigationItem setTitle:[specifier name]];
 }
 
 - (BOOL)shouldReloadSpecifiersOnResume {

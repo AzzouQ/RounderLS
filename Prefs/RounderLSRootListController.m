@@ -4,48 +4,47 @@
 
 - (instancetype)init {
 
-	self = [super init];
-
-	if (self) {
-
-		prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
-
-		RounderLSAppearanceSettings *appearanceSettings = [[RounderLSAppearanceSettings alloc] init];
-		self.hb_appearanceSettings = appearanceSettings;
-
-		self.enableSwitch = [[UISwitch alloc] init];
-		[self.enableSwitch addTarget:self action:@selector(toggleState) forControlEvents:UIControlEventTouchUpInside];
-		UIBarButtonItem *switchy = [[UIBarButtonItem alloc] initWithCustomView: self.enableSwitch];
-
-		self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
-		self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
-		self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-		self.titleLabel.text = @"1.2";
-		self.titleLabel.textColor = [UIColor colorWithRed:0.96 green:0.77 blue:0.75 alpha:1.0];
-		self.titleLabel.textAlignment = NSTextAlignmentCenter;
-
-		self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,10,10)];
-		self.iconView.contentMode = UIViewContentModeScaleAspectFit;
-		self.iconView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/RounderLSPrefs.bundle/icon@2x.png"];
-		self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
-		self.iconView.alpha = 0.0;
-
-		self.navigationItem.rightBarButtonItem = switchy;
-		self.navigationItem.titleView = [UIView new];
-		[self.navigationItem.titleView addSubview:self.titleLabel];
-		[self.navigationItem.titleView addSubview:self.iconView];
-
-		[NSLayoutConstraint activateConstraints:@[
-			[self.titleLabel.topAnchor constraintEqualToAnchor:self.navigationItem.titleView.topAnchor],
-			[self.titleLabel.leadingAnchor constraintEqualToAnchor:self.navigationItem.titleView.leadingAnchor],
-			[self.titleLabel.trailingAnchor constraintEqualToAnchor:self.navigationItem.titleView.trailingAnchor],
-			[self.titleLabel.bottomAnchor constraintEqualToAnchor:self.navigationItem.titleView.bottomAnchor],
-			[self.iconView.topAnchor constraintEqualToAnchor:self.navigationItem.titleView.topAnchor],
-			[self.iconView.leadingAnchor constraintEqualToAnchor:self.navigationItem.titleView.leadingAnchor],
-			[self.iconView.trailingAnchor constraintEqualToAnchor:self.navigationItem.titleView.trailingAnchor],
-			[self.iconView.bottomAnchor constraintEqualToAnchor:self.navigationItem.titleView.bottomAnchor],
-		]];
+	if (!(self = [super init])) {
+		return self;
 	}
+
+	prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderlsprefs"];
+
+	RounderLSAppearanceSettings *appearanceSettings = [[RounderLSAppearanceSettings alloc] init];
+	self.hb_appearanceSettings = appearanceSettings;
+
+	self.enableSwitch = [[UISwitch alloc] init];
+	[self.enableSwitch addTarget:self action:@selector(toggleState) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *switchy = [[UIBarButtonItem alloc] initWithCustomView: self.enableSwitch];
+
+	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
+	self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
+	self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+	self.titleLabel.text = @"1.2";
+	self.titleLabel.textColor = [UIColor colorWithRed:0.96 green:0.77 blue:0.75 alpha:1.0];
+	self.titleLabel.textAlignment = NSTextAlignmentCenter;
+
+	self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,10,10)];
+	self.iconView.contentMode = UIViewContentModeScaleAspectFit;
+	self.iconView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/RounderLSPrefs.bundle/icon@2x.png"];
+	self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
+	self.iconView.alpha = 0.0;
+
+	self.navigationItem.rightBarButtonItem = switchy;
+	self.navigationItem.titleView = [UIView new];
+	[self.navigationItem.titleView addSubview:self.titleLabel];
+	[self.navigationItem.titleView addSubview:self.iconView];
+
+	[NSLayoutConstraint activateConstraints:@[
+		[self.titleLabel.topAnchor constraintEqualToAnchor:self.navigationItem.titleView.topAnchor],
+		[self.titleLabel.leadingAnchor constraintEqualToAnchor:self.navigationItem.titleView.leadingAnchor],
+		[self.titleLabel.trailingAnchor constraintEqualToAnchor:self.navigationItem.titleView.trailingAnchor],
+		[self.titleLabel.bottomAnchor constraintEqualToAnchor:self.navigationItem.titleView.bottomAnchor],
+		[self.iconView.topAnchor constraintEqualToAnchor:self.navigationItem.titleView.topAnchor],
+		[self.iconView.leadingAnchor constraintEqualToAnchor:self.navigationItem.titleView.leadingAnchor],
+		[self.iconView.trailingAnchor constraintEqualToAnchor:self.navigationItem.titleView.trailingAnchor],
+		[self.iconView.bottomAnchor constraintEqualToAnchor:self.navigationItem.titleView.bottomAnchor],
+	]];
 
 	return self;
 }
@@ -100,6 +99,13 @@
 	self.navigationController.navigationController.navigationBar.translucent = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+
+	[super viewDidAppear:animated];
+
+	[self setEnableSwitchState];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 
 	CGFloat offsetY = scrollView.contentOffset.y;
@@ -121,53 +127,27 @@
 
 	[[self enableSwitch] setEnabled:YES];
 
-	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
-	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-	NSSet *allKeys = [NSSet setWithArray:[dictionary allKeys]];
+	isEnabled = [prefs objectForKey:@"Enabled"];
 
-	if (!([allKeys containsObject:@"Enabled"])) {
-		isEnabled = NO;
-		[prefs setBool:isEnabled forKey:@"Enabled"];
-		[self respring];
-	} else if ([[prefs objectForKey:@"Enabled"] isEqual:@(YES)]) {
-		isEnabled = NO;
-		[prefs setBool:isEnabled forKey:@"Enabled"];
-		[self respring];
-	} else if ([[prefs objectForKey:@"Enabled"] isEqual:@(NO)]) {
-		isEnabled = YES;
-		[prefs setBool:isEnabled forKey:@"Enabled"];
-		[self respring];
-	}
+	[prefs setBool:!isEnabled forKey:@"Enabled"];
+	[self respring];
 }
 
 - (void)setEnableSwitchState {
 
-	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
-	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
-	NSSet *allKeys = [NSSet setWithArray:[dictionary allKeys]];
-
-	if (!([allKeys containsObject:@"Enabled"]))
-		[[self enableSwitch] setOn:YES animated:YES];
-	else if ([[prefs objectForKey:@"Enabled"] isEqual:@(YES)])
-		[[self enableSwitch] setOn:YES animated:YES];
-	else if ([[prefs objectForKey:@"Enabled"] isEqual:@(NO)])
-		[[self enableSwitch] setOn:NO animated:YES];
+	[[self enableSwitch] setOn:[prefs objectForKey:@"Enabled"] animated:YES];
 }
 
 - (void)reset {
 
-	UIAlertController *resetAlert = [UIAlertController alertControllerWithTitle:@"RounderLS"
-	message:@"Do you really want to reset your preferences ?"
-	preferredStyle:UIAlertControllerStyleActionSheet];
-	
+	UIAlertController *resetAlert = [UIAlertController alertControllerWithTitle:@"RounderLS" message:@"Do you really want to reset your preferences ?" preferredStyle:UIAlertControllerStyleActionSheet];
+	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Nah" style:UIAlertActionStyleCancel handler:nil];	
 	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yeah" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
 		for (NSString *key in [prefs dictionaryRepresentation]) {
 			[prefs removeObjectForKey:key];
 		}
 		[self respring];
 	}];
-
-	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Nah" style:UIAlertActionStyleCancel handler:nil];
 
 	[resetAlert addAction:confirmAction];
 	[resetAlert addAction:cancelAction];
