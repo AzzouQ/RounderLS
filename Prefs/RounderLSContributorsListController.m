@@ -15,21 +15,14 @@
 	return self;
 }
 
-- (NSArray *)specifiers {
-
-	if (_specifiers == nil) {
-		_specifiers = [[self loadSpecifiersFromPlistName:@"Contributors" target:self] retain];
-	}
-
-	return _specifiers;
-}
-
 - (void)setSpecifier:(PSSpecifier *)specifier {
 
-	[super setSpecifier:specifier];
+	_specifiers = [[self loadSpecifiersFromPlistName:@"Contributors" target:self] retain];
 
 	[self setTitle:[specifier name]];
 	[self.navigationItem setTitle:[specifier name]];
+
+	[super setSpecifier:specifier];
 }
 
 - (BOOL)shouldReloadSpecifiersOnResume {
