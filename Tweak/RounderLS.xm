@@ -6,6 +6,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 
+	%orig;
+
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
 	self.view.clipsToBounds = YES;
@@ -13,13 +15,13 @@
 
 	backgroundView.clipsToBounds = YES;
 	backgroundView.layer.cornerRadius = borderRadius;
-
-	%orig;
 }
 
 
 - (void)viewDidAppear:(BOOL)animated {
 
+	%orig;
+
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
 	self.view.clipsToBounds = NO;
@@ -27,12 +29,12 @@
 
 	backgroundView.clipsToBounds = NO;
 	backgroundView.layer.cornerRadius = 0;
-
-	%orig;
 }
 
 
 - (void)viewWillDisappear:(BOOL)animated {
+
+	%orig;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
@@ -41,11 +43,11 @@
 
 	backgroundView.clipsToBounds = YES;
 	backgroundView.layer.cornerRadius = borderRadius;
-
-	%orig;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
+
+	%orig;
 
 	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
 
@@ -54,8 +56,6 @@
 
 	backgroundView.clipsToBounds = NO;
 	backgroundView.layer.cornerRadius = 0;
-
-	%orig;
 }
 
 %end

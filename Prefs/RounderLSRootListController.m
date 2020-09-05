@@ -3,9 +3,13 @@
 @implementation RounderLSRootListController
 
 - (instancetype)init {
+
 	self = [super init];
 
 	if (self) {
+
+		prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
+
 		RounderLSAppearanceSettings *appearanceSettings = [[RounderLSAppearanceSettings alloc] init];
 		self.hb_appearanceSettings = appearanceSettings;
 
@@ -78,7 +82,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
 	tableView.tableHeaderView = self.headerView;
+
 	return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
@@ -118,7 +124,6 @@
 	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
 	NSSet *allKeys = [NSSet setWithArray:[dictionary allKeys]];
-	prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
 
 	if (!([allKeys containsObject:@"Enabled"])) {
 		isEnabled = NO;
@@ -140,7 +145,6 @@
 	NSString *path = [NSString stringWithFormat:@"/var/mobile/Library/Preferences/com.azzou.rounderlsprefs.plist"];
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
 	NSSet *allKeys = [NSSet setWithArray:[dictionary allKeys]];
-	prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
 
 	if (!([allKeys containsObject:@"Enabled"]))
 		[[self enableSwitch] setOn:YES animated:YES];
@@ -157,8 +161,6 @@
 	preferredStyle:UIAlertControllerStyleActionSheet];
 	
 	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yeah" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-
-		prefs = [[HBPreferences alloc] initWithIdentifier: @"com.azzou.rounderlsprefs"];
 		for (NSString *key in [prefs dictionaryRepresentation]) {
 			[prefs removeObjectForKey:key];
 		}

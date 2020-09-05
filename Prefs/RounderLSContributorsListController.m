@@ -14,11 +14,6 @@
 	return self;
 }
 
-- (id)specifiers {
-
-	return _specifiers;
-}
-
 - (void)loadFromSpecifier:(PSSpecifier *)specifier {
 
 	NSString *sub = [specifier propertyForKey:@"RounderLSSub"];
@@ -38,7 +33,7 @@
 
 - (BOOL)shouldReloadSpecifiersOnResume {
 
-	return false;
+	return NO;
 }
 
 @end
