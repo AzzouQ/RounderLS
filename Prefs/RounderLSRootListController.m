@@ -49,7 +49,7 @@
 	return self;
 }
 
-- (NSArray *)specifiers {
+- (id)specifiers {
 
 	if (_specifiers == nil) {
 		_specifiers = [[self loadSpecifiersFromPlistName:@"Root" target:self] retain];
