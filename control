@@ -7,3 +7,4 @@ Maintainer: Azzou
 Author: Azzou
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 13), ws.hbang.common (>= 1.14)
+Icon: https://raw.githubusercontent.com/AzzouDuGhetto/RounderLS/master/Prefs/Resources/RounderLS.png
