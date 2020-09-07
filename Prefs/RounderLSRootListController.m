@@ -141,16 +141,16 @@
 - (void)reset {
 
 	UIAlertController *resetAlert = [UIAlertController alertControllerWithTitle:@"RounderLS" message:@"Do you really want to reset your preferences ?" preferredStyle:UIAlertControllerStyleActionSheet];
-	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Nah" style:UIAlertActionStyleCancel handler:nil];	
-	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yeah" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Nah" style:UIAlertActionStyleDestructive handler:nil];	
+	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yeah" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
 		for (NSString *key in [prefs dictionaryRepresentation]) {
 			[prefs removeObjectForKey:key];
 		}
 		[self respring];
 	}];
 
-	[resetAlert addAction:confirmAction];
 	[resetAlert addAction:cancelAction];
+	[resetAlert addAction:confirmAction];
 
 	[self presentViewController:resetAlert animated:YES completion:nil];
 }
