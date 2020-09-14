@@ -7,4 +7,5 @@ Maintainer: Azzou
 Author: Azzou
 Section: Tweaks
 Depends: mobilesubstrate, firmware (>= 13), ws.hbang.common (>= 1.14)
-Icon: https://raw.githubusercontent.com/AzzouDuGhetto/RounderLS/master/Prefs/Resources/RounderLS.png
+Icon: https://github.com/AzzouDuGhetto/repo/blob/master/depictions/rounderls/assets/icon.png
+SileoDepiction: https://github.com/AzzouDuGhetto/repo/blob/master/depictions/rounderls/modernDepiction.json
