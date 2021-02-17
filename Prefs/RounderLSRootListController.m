@@ -8,19 +8,13 @@
 		return self;
 	}
 
-	prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderlsprefs"];
-
 	RounderLSAppearanceSettings *appearanceSettings = [[RounderLSAppearanceSettings alloc] init];
 	self.hb_appearanceSettings = appearanceSettings;
-
-	self.enableSwitch = [[UISwitch alloc] init];
-	[self.enableSwitch addTarget:self action:@selector(toggleState) forControlEvents:UIControlEventTouchUpInside];
-	UIBarButtonItem *switchy = [[UIBarButtonItem alloc] initWithCustomView: self.enableSwitch];
 
 	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
 	self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
 	self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-	self.titleLabel.text = @"1.3";
+	self.titleLabel.text = @"1.4";
 	self.titleLabel.textColor = [UIColor colorWithRed:0.96 green:0.77 blue:0.75 alpha:1.0];
 	self.titleLabel.textAlignment = NSTextAlignmentCenter;
 
@@ -30,7 +24,6 @@
 	self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
 	self.iconView.alpha = 0.0;
 
-	self.navigationItem.rightBarButtonItem = switchy;
 	self.navigationItem.titleView = [UIView new];
 	[self.navigationItem.titleView addSubview:self.titleLabel];
 	[self.navigationItem.titleView addSubview:self.iconView];
@@ -80,13 +73,6 @@
 	_table.tableHeaderView = self.headerView;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-	tableView.tableHeaderView = self.headerView;
-
-	return [super tableView:tableView cellForRowAtIndexPath:indexPath];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
 
 	[super viewWillAppear:animated];
@@ -99,43 +85,11 @@
 	self.navigationController.navigationController.navigationBar.translucent = YES;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-	[super viewDidAppear:animated];
+	tableView.tableHeaderView = self.headerView;
 
-	[self setEnableSwitchState];
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-
-	CGFloat offsetY = scrollView.contentOffset.y;
-
-	if (offsetY > 200) {
-		[UIView animateWithDuration:0.2 animations:^{
-			self.iconView.alpha = 1.0;
-			self.titleLabel.alpha = 0.0;
-		}];
-	} else {
-		[UIView animateWithDuration:0.2 animations:^{
-			self.iconView.alpha = 0.0;
-			self.titleLabel.alpha = 1.0;
-		}];
-	}
-}
-
-- (void)toggleState {
-
-	[[self enableSwitch] setEnabled:YES];
-
-	isEnabled = [prefs objectForKey:@"Enabled"];
-
-	[prefs setBool:!isEnabled forKey:@"Enabled"];
-	[self respring];
-}
-
-- (void)setEnableSwitchState {
-
-	[[self enableSwitch] setOn:[prefs objectForKey:@"Enabled"] animated:YES];
+	return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
 - (void)reset {
@@ -143,9 +97,8 @@
 	UIAlertController *resetAlert = [UIAlertController alertControllerWithTitle:@"RounderLS" message:@"Do you really want to reset your preferences ?" preferredStyle:UIAlertControllerStyleActionSheet];
 	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleCancel handler:nil];	
 	UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
-		for (NSString *key in [prefs dictionaryRepresentation]) {
-			[prefs removeObjectForKey:key];
-		}
+		HBPreferences *prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderlsprefs"];
+    	[prefs removeAllObjects];
 		[self respring];
 	}];
 
@@ -157,17 +110,7 @@
 
 - (void)respring {
 
-	UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleRegular];
-	UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blur];
-	[blurView setFrame:self.view.bounds];
-	[blurView setAlpha:0.0];
-	[[self view] addSubview:blurView];
-
-	[UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-		[blurView setAlpha:1.0];
-	} completion:^(BOOL finished) {
-		[HBRespringController respringAndReturnTo:[NSURL URLWithString:@"prefs:root=RounderLS"]];
-	}];
+	[HBRespringController respringAndReturnTo:[NSURL URLWithString:@"prefs:root=RounderLS"]];
 }
 
 @end

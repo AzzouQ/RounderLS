@@ -14,12 +14,14 @@
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Settings</string>
+			<key>footerText</key>
+			<string>Respring is required to take effect.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSliderCell</string>
 			<key>key</key>
-			<string>borderRadius</string>
+			<string>cornerRadius</string>
 			<key>default</key>
 			<real>39.0</real>
 			<key>min</key>
@@ -78,7 +80,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Link</string>
+			<string>Links</string>
 		</dict>
 		<dict>
 			<key>cellClass</key>

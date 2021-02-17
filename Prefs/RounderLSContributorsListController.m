@@ -20,9 +20,4 @@
 	return _specifiers;
 }
 
-- (BOOL)shouldReloadSpecifiersOnResume {
-
-	return NO;
-}
-
 @end

@@ -2,5 +2,4 @@
 
 HBPreferences	*prefs;
 
-BOOL			isEnabled;
-CGFloat			borderRadius;
+CGFloat			cornerRadius;

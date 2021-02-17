@@ -2,60 +2,29 @@
 
 %group RounderLS
 
-%hook CSCoverSheetViewController
+%hook SBCoverSheetSlidingViewController
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidLoad {
 
-	%orig;
+	/*
+	//	SBCoverSheetPanelBackgroundContainerView
+	//	Set the radius to every subviews of the CoverSheet
+	*/
+	self.view.subviews[0].clipsToBounds = YES;
+	self.view.subviews[0].layer.maskedCorners = kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner;
+	self.view.subviews[0].layer.cornerRadius = cornerRadius;
+	self.view.subviews[0].layer.cornerCurve = kCACornerCurveContinuous;
 
-	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
-
-	self.view.clipsToBounds = YES;
-	self.view.layer.cornerRadius = borderRadius;
-
-	backgroundView.clipsToBounds = YES;
-	backgroundView.layer.cornerRadius = borderRadius;
-}
-
-
-- (void)viewDidAppear:(BOOL)animated {
-
-	%orig;
-
-	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
-
-	self.view.clipsToBounds = NO;
-	self.view.layer.cornerRadius = 0;
-
-	backgroundView.clipsToBounds = NO;
-	backgroundView.layer.cornerRadius = 0;
-}
-
-
-- (void)viewWillDisappear:(BOOL)animated {
+	/*
+	//	CSCoverSheetView
+	//	Needed to avoid notifications to overlap the radius
+	*/
+	self.childViewControllers[0].view.clipsToBounds = YES;
+	self.childViewControllers[0].view.layer.maskedCorners = kCALayerMinXMaxYCorner | kCALayerMaxXMaxYCorner;
+	self.childViewControllers[0].view.layer.cornerRadius = cornerRadius;
+	self.view.subviews[0].layer.cornerCurve = kCACornerCurveContinuous;
 
 	%orig;
-
-	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
-
-	self.view.clipsToBounds = YES;
-	self.view.layer.cornerRadius = borderRadius;
-
-	backgroundView.clipsToBounds = YES;
-	backgroundView.layer.cornerRadius = borderRadius;
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-
-	%orig;
-
-	SBCoverSheetPanelBackgroundContainerView *backgroundView = self.view.superview.superview.superview.subviews[0];
-
-	self.view.clipsToBounds = NO;
-	self.view.layer.cornerRadius = 0;
-
-	backgroundView.clipsToBounds = NO;
-	backgroundView.layer.cornerRadius = 0;
 }
 
 %end
@@ -66,10 +35,7 @@
 
 	prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderlsprefs"];
 
-	[prefs registerBool:&isEnabled default:YES forKey:@"Enabled"];
-	[prefs registerFloat:&borderRadius default:39.0 forKey:@"borderRadius"];
+	[prefs registerFloat:&cornerRadius default:39.0 forKey:@"cornerRadius"];
 
-	if (isEnabled) {
-		%init(RounderLS);
-	}
+	%init(RounderLS);
 }
