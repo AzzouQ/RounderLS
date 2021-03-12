@@ -2,7 +2,7 @@
 
 %group RounderLS
 
-%hook SBCoverSheetSlidingViewController
+%hook SBCoverSheetPrimarySlidingViewController
 
 - (void)viewDidLoad {
 
@@ -33,7 +33,7 @@
 
 %ctor {
 
-	prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderlsprefs"];
+	prefs = [[HBPreferences alloc] initWithIdentifier:@"com.azzou.rounderls"];
 
 	[prefs registerFloat:&cornerRadius default:39.0 forKey:@"cornerRadius"];
 

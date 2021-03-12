@@ -33,9 +33,7 @@
 			<key>isSegmented</key>
 			<false/>
 			<key>defaults</key>
-			<string>com.azzou.rounderlsprefs</string>
-			<key>PostNotification</key>
-			<string>com.azzou.rounderlsprefs/ReloadPrefs</string>
+			<string>com.azzou.rounderls</string>
 		</dict>
 
 		<dict>
@@ -73,7 +71,7 @@
  			<key>label</key>
  			<string>Contributors</string>
  			<key>detail</key>
- 			<string>RounderLSContributorsListController</string>
+ 			<string>RounderLSContributorListController</string>
  		</dict>
 
 		<dict>

@@ -1,5 +1,5 @@
 #import <Cephei/HBPreferences.h>
 
-HBPreferences	*prefs;
+HBPreferences   *prefs;
 
 CGFloat			cornerRadius;

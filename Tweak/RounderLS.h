@@ -1,5 +1,5 @@
 #import <UIKit/UIKit.h>
 #import "RounderLSPreferences.h"
 
-@interface SBCoverSheetSlidingViewController : UIViewController
+@interface SBCoverSheetPrimarySlidingViewController : UIViewController
 @end

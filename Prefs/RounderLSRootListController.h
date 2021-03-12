@@ -5,17 +5,16 @@
 #import <CepheiPrefs/HBRootListController.h>
 #import <CepheiPrefs/HBAppearanceSettings.h>
 
+#import "../Tweak/RounderLSPreferences.h"
+
 @interface RounderLSAppearanceSettings : HBAppearanceSettings
 @end
 
-@interface RounderLSRootListController : HBRootListController {
-	UITableView *_table;
-}
+@interface RounderLSRootListController : HBRootListController
 
-@property (nonatomic, retain) UIView *headerView;
-@property (nonatomic, retain) UIImageView *headerImageView;
 @property (nonatomic, retain) UILabel *titleLabel;
-@property (nonatomic, retain) UIImageView *iconView;
+@property (nonatomic, retain) UIView *bannerView;
+@property (nonatomic, retain) UIImageView *bannerImage;
 
 - (void)reset;
 - (void)respring;
