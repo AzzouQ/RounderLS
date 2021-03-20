@@ -13,7 +13,7 @@
 	self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
 	self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
 	self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
-	self.titleLabel.text = @"1.4";
+	self.titleLabel.text = @"1.5";
 	self.titleLabel.textColor = [UIColor colorWithRed:0.96 green:0.77 blue:0.75 alpha:1.0];
 	self.titleLabel.textAlignment = NSTextAlignmentCenter;
 
